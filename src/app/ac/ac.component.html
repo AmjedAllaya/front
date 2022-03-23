@@ -1,0 +1,495 @@
+
+
+<div class="super_container"  >
+
+ <header class="header trans_300 ha" >
+
+  <div class="navbarr" style="height:100px ; "  >
+    <a><img src="assets/images/leb/logo final noir.png"  style="height:100px ;width:200px;" > </a> 
+    <a   href="http://localhost:4200/" style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue" >Acceuil</a>   
+    <div class="divn" (click)=" Navigate(Prod)"><a (click)="cosm()"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Cosmétique naturelle</a>
+      <a (click)="parf()"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Parfums</a>
+   <a (click)="bij()"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Bijoux</a>
+    <a (click)="maq()"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Maquillage</a>
+    <a (click)="ling()" style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Lingeries</a>
+    <a (click)="acce()"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Accessoires</a>
+    <a routerLink="/login"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Espace affiliés</a>
+  </div>
+
+    
+
+  
+
+ 
+ 
+
+
+<ul class="navbar_user" style="display: inline;float: right;margin-right:100px;">
+    
+  <li class="checkout" style="background-color: #E6B0AA;" >
+  <a style="background-color: #E6B0AA;">
+      <i class="fa fa-shopping-cart" style="background-color: #E6B0AA;color: black;font-size: x-large;" aria-hidden="true"  mat-icon-button [matMenuTriggerFor]="menu" (click)="liste()"> <span id="checkout_items" class="checkout_items">{{nombrePan}}</span>
+        <mat-menu #menu="matMenu" xposition="before"  >
+        
+          <button mat-menu-item  *ngFor="let menu of menuList,index as i">
+            <mat-icon (click)="sup(i)">delete</mat-icon>
+            <span>{{menu.nameProd}}</span>
+          </button>
+          <div *ngIf="li" class="red_button shop_now_button" (click)="Vprix()" style="color:aliceblue"><a>acheter</a></div>
+        </mat-menu></i>
+     
+  </a>
+  </li>
+  </ul>
+ 
+</div>
+
+    <div class="main_nav_container" style="height: 100px;background:#E6B0AA; 
+ 
+ 
+   ">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-right">
+            <div class="logo_container">
+            <img src="assets/images/leb/logo final noir.png"   style="height:70px ;width: 150px;">
+            </div>
+            <nav class="navbar">
+            
+              <ul class="navbar_user"  >
+               
+                <li><a routerLink="/login"><i class="fa fa-user" aria-hidden="true"></i></a>
+  
+               </li>
+                <li class="checkout">
+                  <a >
+                    <i class="fa fa-shopping-cart" aria-hidden="true"  mat-icon-button [matMenuTriggerFor]="menu" (click)="liste()"></i>
+                    <span id="checkout_items" class="checkout_items" >{{this.menuList.length}}</span>
+                    <mat-menu #menu="matMenu" xposition="before"  >
+                    
+                      <button mat-menu-item  *ngFor="let menu of menuList,index as i">
+                        <mat-icon (click)="sup(i)">delete</mat-icon>
+                        <span>{{menu.nameProd}}</span>
+                      </button>
+                      <div *ngIf="li" class="red_button shop_now_button" (click)="Vprix()" style="color:aliceblue"><a>acheter</a></div>
+                    </mat-menu>
+                  </a>
+                </li>
+              </ul>
+              <div class="hamburger_container">
+                <i class="fa fa-bars"  (click)="navMobile()"></i>
+                <div class="topnav" id="myLinks"  >
+                  <a  href="http://localhost:4200/"  style="font-size: large;  font-weight: bold;font-style: italic;" >aceuil</a>   
+                  <div (click)=" Navigate(Prod)" >
+                    <a (click)="cosm()"  style="font-size: large;  font-weight: bold;font-style: italic;">Cosmétique naturel</a>
+                    <a (click)="parf()"  style="font-size: large;  font-weight: bold;font-style: italic;" >Parfums</a>
+                 <a (click)="bij()"  style="font-size: large;  font-weight: bold;font-style: italic;">Bijoux</a>
+                  <a (click)="maq()"  style="font-size: large;  font-weight: bold;font-style: italic;">Maquillage</a>
+                  <a (click)="ling()"  style="font-size:large;  font-weight: bold;font-style: italic;">lingeries</a>
+                  <a (click)="acce()"  style="font-size: large;  font-weight: bold;font-style: italic;">accessoires</a>
+              
+                  </div>
+                  
+              </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+
+ 
+  <div class="fs_menu_overlay"style="margin-bottom:100px"></div>
+
+
+  <!-- Slider -->
+
+  <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'" *ngIf="car" >
+    
+    <mdb-carousel-item  >
+      <img style="height: 600px;" class="d-block w-100" src="assets/images/leb/leb1.png" alt="First slide">
+    </mdb-carousel-item>
+    <mdb-carousel-item>
+      <img style="height: 600px;;" class="d-block w-100" src="assets/images/leb/hed2.jpg" alt="Second slide">
+    </mdb-carousel-item>
+    <mdb-carousel-item>
+      <img style="height: 600px;" class="d-block w-100" src="assets/images/leb/ner.jpg" alt="Third slide">
+    </mdb-carousel-item>
+  </mdb-carousel>
+
+  <!-- Banner -->
+  
+  <body>
+ <!--tab-->
+ <div class="container">
+<!----  <div class="row"  >
+    <div class="col text-center">
+      <div class="section_title" style="margin-top: 30px;">
+        <h2 *ngIf="tab">Devis</h2>
+      
+      </div>
+    </div>
+    </div>-->
+   
+ <div style="overflow-x:auto;"   >
+  <table *ngIf="tab" style="margin-top: 200px;margin-bottom: 50px;">
+    <tr>
+      <th >Produit</th>
+      <th  style="text-align: center;">nom</th>
+      <th  style="text-align: center;">Pris</th>
+      
+      
+    </tr>
+    <tr *ngFor="let menu of menuList,index as i" >
+      <td><img [src]="menu.img" alt="Paris"  style="  border-radius: 50%;width: 100px;height: 100px;"></td>
+      <td style="text-align: center;">{{menu.nameProd}}</td>
+      <td style="text-align: center;"> <div class="product_price">${{menu.prixProd}}</div></td>
+  
+     
+    </tr>
+   
+    <tr>
+     <td></td>
+     <td></td>
+     <td class="bg-danger" style="text-align: center;">TOTALE</td>
+    </tr>
+    <tr>
+   
+       <td></td>
+       <td></td>
+   
+     </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td> <table>
+        <tr>
+          
+    
+          
+          
+        </tr>
+        <tr>
+          <td style="text-align: center;"></td>
+           <td style="text-align: center;"> <div class="product_price"><span></span><br>${{prixTot}}</div></td>
+          <td style="text-align: center;" (click)=" afficheForm()">   <div class="red_button shop_now_button" style="color:aliceblue" ><a><i class="bi bi-star"></i>shop now</a></div></td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">offre affilier</td>
+           <td style="text-align: center;"> <div class="product_price"><span>${{prixTot}}</span><br> ${{prixAff}}</div></td>
+          <td style="text-align: center;" (click)=" afficheFormAFF()">   <div class="red_button shop_now_button" style="color:aliceblue" ><a><svg style="color:aliceblue" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+          </svg> voire l'offre</a></div></td>
+        </tr>
+      </table>   </td>
+    </tr>
+  </table>
+ 
+  </div>
+      <section *ngIf="affForm" style="margin-top: 200px;" >
+   <app-add-student style="margin-top: 50px;margin-bottom: 50px;" ></app-add-student> 
+       
+      </section>  
+    
+   
+   
+ <!---tab-->
+  
+ <div class="container" >
+ 
+  <div class="banner" *ngIf="im"  (click)=" Navigate(Prod)"  >
+ 
+      <div class="row" style="margin-top: 30px;">
+      
+       
+        <div class="col-md-3"  >
+          <div class="banner_item align-items-center" style="background-image:url(assets/images/leb/parayd.jpg)">
+            <div class="banner_category diva ">
+              <a (click)="parf()" class="aa"   >Parfums</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3" *ngIf="im">
+          <div class="banner_item align-items-center" style="background-image:url(assets/images/leb/meqayd.jpg)">
+            <div class="banner_category diva ">
+              <a (click)="maq()" class="aa"  >Maquillage</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3"  *ngIf="im">
+          <div class="banner_item align-items-center" style="background-image:url(assets/images/leb/lingayd.jpg)">
+            <div class="banner_category diva">
+              <a (click)="ling()" class="aa">lingerie</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 " >
+          <div class="banner_item align-items-center" style="background-image:url(assets/images/leb/acayd.jfif)">
+            <div class="banner_category diva " >
+              <a (click)="acce()" class="aa" >accesoires</a>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="row" >
+         
+          <div class="col-md-6 " style="margin-top:30px;" >
+            <div class="banner_item align-items-center" style="background-image:url(assets/images/leb/hed5.jpg)">
+              <div class="banner_category diva " >
+                <a (click)="cosm()" class="aa" >cosmétique</a>
+               
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 " style="margin-top:30px;" >
+            <div class="banner_item align-items-center" style="background-image:url(assets/images/leb/rec.jpeg) ;">
+              <div class="banner_category diva " >
+                <a (click)="bij()" class="aa" >bijoux</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      
+       
+        
+        
+      
+    
+    </div>
+  </div>
+  <!--ss-->
+  <div class="newsletter" style="background: #E6B0AA;" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div style="margin-top: 20px;" class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
+           <img (click)="navAd()"  src="assets/images/leb/logo final noir.png" style="width:200px;height: 200px;" >
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <form action="post">
+            <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
+              <input id="newsletter_email" type="email" placeholder="envoyer votre message" required="required" data-error="Valid email is required.">
+              <button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" style="background-color: #EDA288;" value="Submit">envoyer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!--fs-->
+ 
+  <!-- New Arrivals -->
+
+  <div class="new_arrivals" #Prod>
+    <div class="container"  *ngIf="im" style="margin-top:50px;">
+      <div class="row" *ngIf="!cat" >
+        <div class="col text-center" style="color:#EDA288;padding-top: 20px;">
+         
+            <h2 *ngIf="!cat" style="font-size:30px;
+            font-family: 'Buenard', serif;
+            font-weight:bold;
+            text-transform: uppercase;font-style: italic;color:#EDA288;">Nos Produits</h2>
+          
+        </div>
+      </div>
+      <div class="row align-items-center" *ngIf="!cat">
+        <div class="col text-center">
+          <div class="new_arrivals_sorting">
+            <ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
+              <li *ngIf="cat" class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center  is-checked" style="background-color:#EDA288;;" data-filter="*">Pack</li>
+              <li *ngIf="!cat" class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center  is-checked" style="background-color:#EDA288; ;" data-filter="*">{{typeProduit}}</li>
+              <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">Homme</li>
+              <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">Femme</li>
+              <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">Pack</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+     <!---nn--> 
+     
+     <!--nn-->
+      <div class="row" *ngIf="!cat">
+   
+            
+        <div  class=" col-xs-12 col-sm-6 col-md-3 col-lg-3 product-item men" *ngFor="let prod of ProduitOrdre ,index as i" >
+          <div class="product discount product_filter">
+            <div class="product_image">
+              <img [src]="prod.img" style="height: 235px;width: 235px;" alt="">
+            </div>
+            <div class="favorite favorite_left"></div>
+            <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-${{prod.promo}}</span></div>
+            <div class="product_info">
+              <h6 class="product_name"><a href="#">{{prod.  nameProd}}</a></h6>
+              <div class="product_price">${{prod.prixProd}}<span>{{prod.prixProd+prod.promo}}</span></div>
+            </div>
+          </div>
+          <div class="red_button add_to_cart_button"><a (click)="ajout(i)">add to cart</a></div>
+        </div>
+     <!---->
+     
+      </div>
+
+
+    </div>
+  </div>
+  <section *ngIf="cat">
+  
+ <app-concept></app-concept>
+  </section>
+ 
+  <!-- Deal of the week -->
+
+ 
+
+
+  <!-- Best Sellers -->
+
+  <div class="best_sellers" >
+  
+
+  <!-- Benefit -->
+
+  
+
+  <!-- <div class="blogs" >
+    <div class="container">
+      
+      <div class="row blogs_container">
+        <div class="col-lg-4 blog_item_col">
+          <div class="blog_item">
+            <div class="blog_background" style="background-image:url(assets/images/leb/2.jpg)"></div>
+            <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center" style="background-color: #f39c12">
+              <h4 class="blog_title" style="font-style: italic; font-weight:bold;">neroli beuté pour vous</h4>
+              <span class="blog_meta">by admin | dec 01, 2021</span>
+              <a class="blog_more" href="#">voire plus</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 blog_item_col">
+          <div class="blog_item">
+            <div class="blog_background" style="background-image:url(assets/images/leb/32.jpg)"></div>
+            <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center" style="background-color: #f39c12;">
+              <h4 class="blog_title" style="font-style: italic; font-weight:bold;">neroli beuté pour vous</h4>
+              <span class="blog_meta">by admin | dec 01, 2021</span>
+              <a class="blog_more" href="#">voire plus</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 blog_item_col">
+          <div class="blog_item">
+            <div class="blog_background" style="background-image:url(assets/images/leb/4.jpg)"></div>
+            <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center" style="background-color: #f39c12 ;">
+              <h4 class="blog_title" style="font-style: italic; font-weight:bold;">neroli beuté pour vous</h4>
+              <span class="blog_meta">by admin | dec 01, 2021</span>
+              <a class="blog_more" href="#">voire plus</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  
+  
+
+ 
+
+
+
+  <!-- Footer -->
+
+  <footer class="footer" style="background: #E6B0AA;margin-top:100px" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
+            <ul class="footer_nav">
+             
+              <li><h1><a href="#" style="color: black;"> <i class="fa fa-envelope "  style="color: black;"></i> contact@nerolicosmetic.com</a></h1></li>
+              <li><h1><a href="#" style="color: black;"><i class="fa fa-phone"></i>+216 98 425 975</a></h1></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
+            <ul>
+              <li><a href="https://www.facebook.com/Neroli-un-style-de-vie-108886798360710/"><i class="fa fa-facebook" style="font-size: x-large ;" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter" style="font-size: x-large;"  aria-hidden="true"></i></a></li>
+              <li><a href="https://www.instagram.com/p/Ca9k7oVAEVy/?utm_medium=copy_link&fbclid=IwAR1LQtzOPJ_rmZdxBg4q-hgyNWMSeh9fqUwf8-CDfxIq7vL-eZLrHPbrD9U"><i class="fa fa-instagram" style="font-size: x-large;"  aria-hidden="true"></i></a></li>
+              <li><a href="https://www.youtube.com/channel/UC8egQzQoC9xetpA2bhgKstw"><i class="fa fa-youtube" style="font-size: 50px;"  aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </footer>
+  
+ 
+</div>
+</body>
+<!--
+<button type="button" mdbBtn color="primary" mdbWavesEffect>Primary</button>
+<button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>Launch demo modal</button>
+
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+  <mdb-carousel-item>
+    <div class="view w-100">
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).webp" alt="First slide">
+      <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+    </div>
+    <div class="carousel-caption">
+      <h3 class="h3-responsive">Light mask</h3>
+      <p>First text</p>
+    </div>
+  </mdb-carousel-item>
+  </mdb-carousel>-->
+  <!--<mdb-carousel-item>
+    <div class="view w-100">
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).webp" alt="Second slide">
+      <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+    </div>
+    <div class="carousel-caption">
+      <h3 class="h3-responsive">Strong mask</h3>
+      <p>Secondary text</p>
+    </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <div class="view w-100">
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).webp" alt="Third slide">
+      <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+    </div>
+    <div class="carousel-caption">
+      <h3 class="h3-responsive">Slight mask</h3>
+      <p>Third text</p>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel>-->
+
+

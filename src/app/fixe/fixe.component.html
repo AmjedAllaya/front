@@ -1,0 +1,365 @@
+<!--<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    
+    <span class="close"  (click)="drawer.toggle()">&times;</span>
+    <img class="avatar" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
+
+<h4 class="name">John Smith</h4>
+<p class="designation">Software Engineer</p>
+
+    <button mat-button class="menu-button">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+  </button>
+  <button mat-button class="menu-button">
+      <mat-icon>person</mat-icon>
+      <span>Profile</span>
+  </button>
+  <button mat-button class="menu-button">
+      <mat-icon>info</mat-icon>
+      <span>About</span>
+  </button>
+
+  <mat-divider></mat-divider>
+
+  <button mat-button class="menu-button">
+      <mat-icon>help</mat-icon>
+      <span>Help</span>
+  </button>
+  </mat-drawer>
+
+  
+
+</mat-drawer-container>
+<div class="example-sidenav-content">
+  <button type="button" mat-button (click)="drawer.toggle()">
+    Toggle sidenav
+  </button>
+</div>-->
+<!--nn-->
+
+<!--nn-->
+
+  <div class="super_container">
+
+    <!-- Header -->
+  
+    <header class="header trans_300 ha" >
+
+      <div class="navbarr" style="height:100px ; "  >
+        <a><img src="assets/images/leb/logo final noir.png"  style="height:100px ;width:200px;" > </a> 
+        <a    style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue" (click)="testShop()" >shopping</a>   
+        <div class="divn" >
+          <a (click)="cosm()"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Cosmétique naturelle</a>
+          <a (click)="parf()"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Parfums</a>
+       <a (click)="bij()"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Bijoux</a>
+        <a (click)="maq()"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Maquillage</a>
+        <a (click)="ling()" style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Lingeries</a>
+        <a (click)="acce()"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">Accessoires</a>
+        <a routerLink="/login"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">deconnection</a>
+      </div>
+    
+        
+    
+      
+    
+     
+     
+    
+    
+      <ul class="navbar_user" style="margin-top: 20px">
+     
+        <li style="background-color: #E6B0AA;"><a style="background-color: #E6B0AA;" (click)="poFil()"><i style="color:red;" class="fa fa-user" aria-hidden="true"></i></a></li>
+        <li class="checkout" style="background-color: #E6B0AA;" >
+          <a style="background-color: #E6B0AA;" >
+            <i class="fa fa-shopping-cart" aria-hidden="true"  mat-icon-button [matMenuTriggerFor]="menu" (click)="liste()"></i>
+            <span id="checkout_items" class="checkout_items">{{this.menuList.length}}</span>
+            <mat-menu #menu="matMenu" xposition="before"  >
+            
+              <button mat-menu-item  *ngFor="let menu of menuList,index as i">
+                <mat-icon (click)="sup(i)">delete</mat-icon>
+                <span>{{menu.nameProd}}</span>
+              </button>
+              <div (click)="Navigate(Tab)" *ngIf="li"  class="red_button shop_now_button" (click)="tba()" style="color:aliceblue"><a>shop now</a></div>
+              <br>
+              <div (click)="Navigate(Tab)"  *ngIf="li" class="red_button shop_now_button" (click)="ajoutClent()" style="color:aliceblue"><a>Ajout client</a></div>
+            </mat-menu>
+          </a>
+        </li>
+      </ul>
+     
+    </div>
+    
+        <div class="main_nav_container" style="height: 100px;background:#E6B0AA; 
+     
+     
+       ">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 text-right">
+                <div class="logo_container">
+                <img src="assets/images/leb/logo final noir.png"   style="height:70px ;width: 150px;">
+                </div>
+                <nav class="navbar">
+                  <ul class="navbar_user" style="background-color: #E6B0AA;">
+                    <li style="background-color: #E6B0AA;"> <a  style="background-color: #E6B0AA;"href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                    <li><a (click)=" poFil()"><i style="color: red;" class="fa fa-user" aria-hidden="true"></i></a></li>
+                    <li class="checkout" style="background-color: #E6B0AA;">
+                      <a style="background-color: #E6B0AA;">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"  mat-icon-button [matMenuTriggerFor]="menu" (click)="liste()"></i>
+                        <span id="checkout_items" class="checkout_items">{{this.menuList.length}}</span>
+                        <mat-menu #menu="matMenu" xposition="before"  >
+                        
+                          <button mat-menu-item  *ngFor="let menu of menuList,index as i">
+                            <mat-icon (click)="sup(i)">delete</mat-icon>
+                            <span>{{menu.nameProd}}</span>
+                          </button>
+                          <div (click)="Navigate(Tab)" *ngIf="li"  class="red_button shop_now_button" (click)="tba()" style="color:aliceblue"><a>shop now</a></div>
+                          <br>
+                          <div (click)="Navigate(Tab)"  *ngIf="li" class="red_button shop_now_button" (click)="ajoutClent()" style="color:aliceblue"><a>Ajout client</a></div>
+                        </mat-menu>
+                      </a>
+                    </li>
+                  </ul>
+                  
+                  <div class="hamburger_container">
+                    <i class="fa fa-bars"  (click)="navMobile()"></i>
+                    <div class="topnav" id="myLinks"  >
+                             <a    style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue" (click)="testShop()" >shopping</a>  
+                      <div  >
+                        <a (click)="cosm()"  style="font-size: large;  font-weight: bold;font-style: italic;">Cosmétique naturel</a>
+                        <a (click)="parf()"  style="font-size: large;  font-weight: bold;font-style: italic;" >Parfums</a>
+                     <a (click)="bij()"  style="font-size: large;  font-weight: bold;font-style: italic;">Bijoux</a>
+                      <a (click)="maq()"  style="font-size: large;  font-weight: bold;font-style: italic;">Maquillage</a>
+                      <a (click)="ling()"  style="font-size:large;  font-weight: bold;font-style: italic;">lingeries</a>
+                      <a (click)="acce()"  style="font-size: large;  font-weight: bold;font-style: italic;">accessoires</a>
+                      <a routerLink="/login"  style="font-size: large;  font-weight: bold;font-style: italic;color:aliceblue">deconnection</a>
+                  
+                      </div>
+                      
+                  </div>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+      </header>
+  
+    <div class="fs_menu_overlay"></div>
+    
+    <!-- Slider -->
+  
+  <!--liste pannn-->
+  <div class="container" #Tab>
+  <div class="row" >
+   
+    <div style="overflow-x:auto"  >
+  <table *ngIf="tab" style="margin-top: 50px;margin-bottom: 50px;">
+    <tr>
+      <th >Produit</th>
+      <th  style="text-align: center;">nom</th>
+      <th  style="text-align: center;">Pris</th>
+      
+      
+    </tr>
+    <tr *ngFor="let menu of menuList,index as i" >
+      <td><img [src]="menu.img" alt="Paris"  style="  border-radius: 50%;width: 100px;height: 100px;"></td>
+      <td style="text-align: center;">{{menu.nameProd}}</td>
+      <td style="text-align: center;"> <div class="product_price">${{menu.prixProd}}</div></td>
+  
+     
+    </tr>
+   
+    <tr>
+     <td></td>
+     <td></td>
+     <td class="bg-danger" style="text-align: center;">TOTALE</td>
+    </tr>
+    <tr>
+   
+       <td></td>
+       <td></td>
+   
+     </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td> <table>
+        <tr>
+          
+    
+          
+          
+        </tr>
+        <tr  *ngIf="testPrixAff">
+          <td style="text-align: center;"></td>
+           <td style="text-align: center;"> <div class="product_price"><span>${{PrixPannier}}</span><br> ${{prixAff}}</div></td>
+          <td style="text-align: center;" (click)="passerCommande()">   <div class="red_button shop_now_button" style="color:aliceblue" ><a><i class="bi bi-star"></i>shop now</a></div></td>
+        </tr>
+        <tr *ngIf="testPrixNouveaux">
+          <td style="text-align: center;" >offre nouveaux  affilier</td>
+           <td style="text-align: center;"> <div class="product_price"><span>${{PrixPannier}}</span><br> ${{prixNouveauAff}}</div></td>
+          <td style="text-align: center;" >  </td>
+        </tr>
+      </table>   </td>
+    </tr>
+  </table>
+  <div class="col-sm-12"  *ngIf="testPrixAff">
+    
+  
+    
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="livrison" (change)="fulivr($event)">
+        <label class="form-check-label" for="inlineRadio1">liverson</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="poste"  (change)="fuposte($event)">
+        <label class="form-check-label" for="inlineRadio2">par poste</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="direct"  (change)="fudir($event)">
+        <label class="form-check-label" for="inlineRadio2">direct</label>
+      </div>
+     
+    
+  
+   
+  </div>
+  <div  *ngIf="testPrixAff">
+    <div class="form-group col-md-12" *ngIf="testAdr">
+      <label for="inputEmail4">adresse</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]='adresse' ></textarea>
+    </div>
+  </div>
+
+  </div>
+  <app-form-ajout-clent-aff *ngIf="formAff" ></app-form-ajout-clent-aff>
+    </div>
+ 
+  </div>
+   <!--liste  produit-->
+   <div class="container" >
+   
+   <!---fin liste produit-->
+    <!-- Banner -->
+   
+  
+    <!-- New Arrivals -->
+  
+    <div class="new_arrivals" *ngIf="im">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            
+            <h2  style="font-size:30px;
+            font-family: 'Buenard', serif;
+            font-weight:bold;
+            text-transform: uppercase;font-style: italic;color:#EDA288;">Nos Produits</h2>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col text-center">
+            <div class="new_arrivals_sorting">
+              <ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
+                <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">{{typeProduit}}</li>
+                <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">Homme</li>
+                <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">Femmme</li>
+                <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">Paque</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+       <!---nn--> 
+       
+       <!--nn-->
+        <div class="row" #Prod>
+         
+             
+          <div class=" col-sm-6 col-md-3 col-lg-3  product-item men"   *ngFor="let prod of ProduitOrdre ,index as i">
+            <div class="product discount product_filter">
+              <div class="product_image" >
+                <img [src]="prod.img" alt="" style="height: 235px;width:100%;">
+              </div>
+              <div class="favorite favorite_left"></div>
+              <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-${{prod.promo}}</span></div>
+              <div class="product_info">
+                <h6 class="product_name"><a href="#">{{prod.  nameProd}}</a></h6>
+                <div class="product_price">${{prod.prixProd}}<span>${{prod.prixProd+prod.promo}}</span></div>
+              </div>
+            </div>
+            <div class="red_button add_to_cart_button"><a (click)="ajout(i)">add to cart</a></div>
+          </div>
+          </div>
+      
+  
+  
+      </div>
+    </div>
+   <!--tab-->
+ 
+          
+  
+     
+     
+   <!---tab-->
+    
+   
+  
+    <!-- New Arrivals -->
+  
+  
+  
+    <!-- Deal of the week -->
+  
+   
+  
+    <!-- Best Sellers -->
+  
+  
+    <!-- Benefit -->
+  <div  *ngIf="profil">
+
+  <app-profil-aff></app-profil-aff>
+  </div>
+   
+  
+    <!-- Blogs -->
+   
+   
+  
+    <!-- Newsletter -->
+  
+    
+   
+  </div>
+  <footer class="footer" style="background: #E6B0AA;margin-top:100px" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
+            <ul class="footer_nav">
+             
+              <li><h1><a href="#" style="color: black;"> <i class="fa fa-envelope "  style="color: black;"></i> contact@nerolicosmetic.com</a></h1></li>
+              <li><h1><a href="#" style="color: black;"><i class="fa fa-phone"></i>+216 98 425 975</a></h1></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
+            <ul>
+              <li><a href="https://www.facebook.com/Neroli-un-style-de-vie-108886798360710/"><i class="fa fa-facebook" style="font-size: x-large ;" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter" style="font-size: x-large;"  aria-hidden="true"></i></a></li>
+              <li><a href="https://www.instagram.com/p/Ca9k7oVAEVy/?utm_medium=copy_link&fbclid=IwAR1LQtzOPJ_rmZdxBg4q-hgyNWMSeh9fqUwf8-CDfxIq7vL-eZLrHPbrD9U"><i class="fa fa-instagram" style="font-size: x-large;"  aria-hidden="true"></i></a></li>
+              <li><a href="https://www.youtube.com/channel/UC8egQzQoC9xetpA2bhgKstw"><i class="fa fa-youtube" style="font-size: 50px;"  aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </footer>
+</div>
+
+

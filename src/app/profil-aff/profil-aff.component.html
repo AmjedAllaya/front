@@ -1,0 +1,150 @@
+<div class="container">
+  <div style='margin-top:200px'>
+    <!-- User Start -->
+    <div class="flex flex-wrap">
+      <div class="flex space-x-3  rounded-md px-5 py-3 w-full sm:w-1/2" style='  background-color:#E6B0AA  ;'>
+        <div class="w-16 h-16 rounded-full overflow-hidden shadow-md">
+          <img src="https://thumbs.dreamstime.com/b/vecteur-d-ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-photo-sociale-inconnue-utilisateur-m%C3%A9dias-l-184816085.jpg" alt="" class="w-full h-full object-cover">
+        </div>
+        <div class="text-white">
+          <h5>{{log.user.nom}} {{log.user.prenom}}</h5>
+          <p class="leading-normal text-white">
+            <span class="font-medium">Email</span> : {{log.user.email}}</p>
+        </div>
+      </div>
+      <div class="w-full sm:w-1/2 sm:pl-5 mt-5 mmd:t-0">
+        <p>
+          <strong>grade</strong> : {{log.user.grade.grade}}</p>
+        <p class="mt-1">
+          <strong>points</strong>: {{log.points}}</p>
+          <p class="mt-1">
+            <strong>salaire</strong>: {{log.user.brut}}</p>
+            <p class="mt-1">
+              <strong>prime</strong>: {{log.user.primeParinage}}</p>
+            <p class="mt-1">
+              <strong>Date de salaire</strong>: {{log.user.datSalaiire}}</p>
+             
+
+      </div>
+    </div>
+    <!-- User End -->
+    <!-- User Meta Start -->
+    <div class="border bg-white mt-8 rounded-md">
+      <div class="flex p-4 bg-gray-200">
+        <h6 class="text-normal">Primary Information</h6>
+        <button class="text-blue-400 hover:text-accent ml-auto flex items-center">
+          <mat-icon class="_edit_icon mr-2">edit</mat-icon>
+          Edit</button>
+      </div>
+      <div class="flex flex-wrap p-4">
+        <div class="w-full sm:w-1/2">
+          <div class="ll-dataset">
+            <div class="ll-dataset__label">
+              Email:
+            </div>
+            <div class="ll-dataset__value">
+              {{log.user.email}}
+            </div>
+          </div>
+          <div class="ll-dataset mt-4">
+            <div class="ll-dataset__label">
+              Number:
+            </div>
+            <div class="ll-dataset__value">
+              {{log.user.phone}}
+            </div>
+          </div>
+        </div>
+        <div class="w-full sm:w-1/2 mt-4 sm:mt-0">
+          <div class="ll-dataset">
+            <div class="ll-dataset__label">
+              Username:
+            </div>
+            <div class="ll-dataset__value">
+              {{log.user.prenom}}
+            </div>
+          </div>
+          <div class="ll-dataset mt-4">
+            <div class="ll-dataset__label">
+              Business Role:
+            </div>
+            <div class="ll-dataset__value">
+              {{log.user.grade.grade}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- User Meta End -->
+    <!-- User Meta Start -->
+    <div class="border bg-white mt-8 rounded-md">
+      <div class="flex p-4 bg-gray-200">
+        <h6 class="text-normal">equipe</h6>
+        <button class="text-blue-400 hover:text-accent ml-auto flex items-center">
+          <mat-icon class="_edit_icon mr-2">edit</mat-icon>
+          Edit</button>
+      </div>
+      <div class="flex flex-wrap p-4">
+        <div class="w-full sm:w-1/2">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">prenom</th>
+                <th scope="col">name</th>
+                <th scope="col">email</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let us of tab,index as i" >
+              <tr>
+                <th scope="row">{{i}}</th>
+                <td>{{us.name}}</td>
+                <td>{{us.prenom}}</td>
+                <td>{{us.email}}</td>
+                <td><button type="button">voire plus</button></td>
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+       
+      </div>
+      <div class="flex p-4 bg-gray-200">
+        <h6 class="text-normal">commandes salaires</h6>
+        <button class="text-blue-400 hover:text-accent ml-auto flex items-center">
+          <mat-icon class="_edit_icon mr-2">edit</mat-icon>
+         Voire</button>
+      </div>
+      <div class="flex flex-wrap p-4">
+        <div class="w-full sm:w-1/2">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">date de commande</th>
+                <th scope="col">prix totale</th>
+                <th scope="col">nom </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let com of log.user.commandesSalaire,index as i" >
+              <tr>
+                <th scope="row">{{i}}</th>
+                <td>{{com.date}}</td>
+                <td>{{com. prixTot}}</td>
+                <td>{{com.user.name}} {{com.user.prenom}}</td>
+              
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+       
+      </div>
+    </div>
+    <!-- User Meta End -->
+  </div>
+  
+
+
+ 
+  </div>

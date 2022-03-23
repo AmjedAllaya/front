@@ -1,0 +1,51 @@
+<form [formGroup]="user" >
+  
+  
+  <div class="form-row" >
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">nom</label>
+      <input type="text" class="form-control" id="inputEmail4" placeholder="entre votre nom"  formControlName='name' >
+      <p *ngIf="user.controls.name.hasError('required') && this.user.controls.name.touched" style="color: red;"> nom obligatoire </p>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="inputPassword4">Prenom</label>
+      <input type="text" class="form-control" id="inputPassword4" placeholder="enter votre nom"  formControlName='prenom'>
+      <p *ngIf="user.controls.prenom.hasError('required') && this.user.controls.prenom.touched" style="color: red;"> prenom obligatoire </p>
+    </div>
+  </div>
+  <div class="form-row" >
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email"  formControlName='email'>
+      <p *ngIf="user.controls.email.hasError('required') && this.user.controls.email.touched" style="color: red;"> email obligatoire </p>
+      <p *ngIf="user.controls.email.hasError('required') && this.user.controls.email.touched" style="color: red;">  email n'est pas correct </p>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="inputPassword4">Phone</label>
+      <input type="number" class="form-control" id="inputPassword4" placeholder="Password" formControlName='phone' >
+      <p *ngIf="user.controls.phone.hasError('required') && this.user.controls.phone.touched" style="color: red;"> prenom obligatoire </p>
+    </div>
+  </div>
+  <div class="form-row" >
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">cin</label>
+      <input type="number" class="form-control" id="inputEmail4" placeholder="cin" formControlName='cin' [(ngModel)]="pass">
+    </div>
+    <div class="form-group col-md-12">
+      <label for="inputPassword4">confirme cin</label>
+      <input type="number" class="form-control" id="inputPassword4" placeholder="cin" formControlName='password'>
+      <p *ngIf="user.controls.password.hasError('obj') && this.user.controls.password.touched" style="color: red;"> non confirmer </p>
+    </div>
+  </div>
+  <div class="form-row" >
+    
+    <select class="form-select" aria-label="Default select example" (change)="chGrade($event)"  >
+    <option   selected>choisir grade</option>
+    <option value={{grade.grade}} *ngFor="let grade of  log.tabGrade , index as i">{{grade.grade}}</option>
+  </select>
+</div>
+
+  
+
+  <button type="button"[disabled]='!user.valid' class="btn btn-outline-primary"(click)="enregistre()">psser voter commande</button>
+</form>

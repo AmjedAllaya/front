@@ -1,0 +1,67 @@
+<div class="col-sm-12">
+    
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="livrison" (change)="fulivr($event)">
+    <label class="form-check-label" for="inlineRadio1">liverson</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="poste"  (change)="fuposte($event)">
+    <label class="form-check-label" for="inlineRadio2">par poste</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="direct"  (change)="fudir($event)">
+    <label class="form-check-label" for="inlineRadio2">direct</label>
+  </div>
+ 
+</div>
+<div class="form-group col-md-12" *ngIf="testAdr">
+  <label for="inputEmail4">adresse</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]='adresse' ></textarea>
+
+</div>
+<form [formGroup]="user" >
+  
+  
+  <div class="form-row" >
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">nom</label>
+      <input type="text" class="form-control" id="inputEmail4" placeholder="entre votre nom"  formControlName='name' >
+      <p *ngIf="user.controls.name.hasError('required') && this.user.controls.name.touched" style="color: red;"> nom obligatoire </p>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="inputPassword4">Prenom</label>
+      <input type="text" class="form-control" id="inputPassword4" placeholder="enter votre nom"  formControlName='prenom'>
+      <p *ngIf="user.controls.prenom.hasError('required') && this.user.controls.prenom.touched" style="color: red;"> prenom obligatoire </p>
+    </div>
+  </div>
+  <div class="form-row" >
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email"  formControlName='email'>
+      <p *ngIf="user.controls.email.hasError('required') && this.user.controls.email.touched" style="color: red;"> email obligatoire </p>
+      <p *ngIf="user.controls.email.hasError('required') && this.user.controls.email.touched" style="color: red;">  email n'est pas correct </p>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="inputPassword4">Phone</label>
+      <input type="number" class="form-control" id="inputPassword4" placeholder="Password" formControlName='phone' >
+      <p *ngIf="user.controls.phone.hasError('required') && this.user.controls.phone.touched" style="color: red;"> prenom obligatoire </p>
+    </div>
+  </div>
+  <div class="form-row" >
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">cin</label>
+      <input type="number" class="form-control" id="inputEmail4" placeholder="cin" formControlName='cin' [(ngModel)]="pass">
+    </div>
+    <div class="form-group col-md-12">
+      <label for="inputPassword4">confirme cin</label>
+      <input type="number" class="form-control" id="inputPassword4" placeholder="cin" formControlName='password'>
+      <p *ngIf="user.controls.password.hasError('obj') && this.user.controls.password.touched" style="color: red;"> non confirmer </p>
+    </div>
+  </div>
+
+
+  
+
+  <button type="button"[disabled]='!user.valid' class="btn btn-outline-primary"(click)="passerAff()">psser voter commande</button>
+</form>
+<!--formnonAff-->

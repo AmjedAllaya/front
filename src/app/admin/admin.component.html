@@ -1,0 +1,419 @@
+<mat-toolbar style="background-color:#04AA6D ;" >
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+   <mat-icon>menu</mat-icon>
+ </button>
+ <span>Neroli</span>
+ <span class="example-spacer"></span>
+ <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+   <mat-icon>favorite</mat-icon>
+ </button>
+ <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <mat-icon>share</mat-icon>
+</button>
+</mat-toolbar>
+<div class="container-fluid">
+ 
+  <div class="row"  style="margin-top: 100px;">
+      <div class="col-3">
+
+<div class=" vertical-menu">
+  <a  data-toggle="collapse"  class="collapsed active" (click)="voireC()" >   <i class="fa fa-shopping-cart" aria-hidden="true"   style="margin-right: 5px;" ></i>
+    <span matBadge={{k}} matBadgeOverlap="false" style="font-size: 20px;">Nouveaux commande</span>  </a>
+    <br> <br>
+  <a href="#" class="active" data-toggle="collapse" data-target="#dashboard"  class="collapsed active" >
+  <i class="fa fa-th-large" style="margin-right: 5px;"></i> <span class="nav-label" style="font-size: 20px;">client</span> </a>
+          <ul class="sub-menu collapse" id="dashboard">
+              <li class="active"><a (click)="ajout()" >ajouter</a></li>
+              <li><a href="#">consulter</a></li>
+              <li><a href="#">modifier</a></li>
+             
+            </ul>
+            <a href="#" data-toggle="collapse" data-target="#products" class="collapsed active" > <i class="fa fa-bar-chart-o"  style="margin-right: 5px;"></i> <span class="nav-label" style="font-size: 20px;">produits</span> </a>
+            <ul class="sub-menu collapse" id="products">
+            
+              <li><a  (click)="ajoutP()">ajouter</a></li>
+              <li><a href="#">cosulter</a></li>
+              <li><a href="#">modifier</a></li>
+             
+            </ul>
+            <a href="#" data-toggle="collapse" data-target="#grades" class="collapsed active" > <i class="fas fa-award" style="margin-right: 5px;"></i> <span class="nav-label" style="font-size: 20px;">grade</span> </a>
+            <ul class="sub-menu collapse" id="grades">
+            
+              <li><a  (click)="ajoutG()">ajouter</a></li>
+              <li><a href="#">cosulter</a></li>
+              <li><a href="#">modifier</a></li>
+              <li><a  (click)="ajoutGradePrime()">ajouter prime</a></li>
+             
+            </ul>
+            <a href="#" data-toggle="collapse" data-target="#grades" class="collapsed active" > <i class="fas fa-award" style="margin-right: 5px;"></i> <span class="nav-label" style="font-size: 20px;">Manger Principale</span> </a>
+            <ul class="sub-menu collapse" id="grades">
+            
+              <li><a >ajouter</a></li>
+              <li><a href="#">cosulter</a></li>
+              <li><a href="#">modifier</a></li>
+             
+            </ul>
+            <a href="#" data-toggle="collapse" data-target="#sal" class="collapsed active" > <i class="fas fa-award" style="margin-right: 5px;"></i> <span class="nav-label" style="font-size: 20px;">salaire</span> </a>
+            <ul class="sub-menu collapse" id="sal">
+            
+              <li><a (click)="vSalaire()">voire</a></li>
+              <li><a href="#">rechercher</a></li>
+        
+             
+            </ul>
+                    
+            
+</div>
+</div>
+<!----->
+<div class="col-9"  >
+
+<div class="row" *ngIf="ajProd" >
+  <div class="form-group">
+    <label for="exampleFormControlSelect1"> Choisir type produit</label>
+    <select class="form-control" id="exampleFormControlSelect1" (change)="selctProd($event)">
+      <option value="cosmetique">cosmétique naturelle</option>
+      <option value="parfum">parfums</option>   
+      <option value="accesoires">accessoires</option>
+      <option value="bijoux">bijoux</option>   
+      <option value="maquillage">maquillage</option>
+      <option value="lingerie">lingerie</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Choisir le sex</label>
+    <select class="form-control" id="exampleFormControlSelect1" (change)="selectSex($event)">
+      <option value="h">homme</option>
+      <option value="f">femme</option>
+     
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">nom Produit</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="entre le nom de produit" [(ngModel)]="nameProd">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">reference</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ebtrer referense de produit" [(ngModel)]="refProd">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">prix</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="prix" [(ngModel)]="prixProd">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">promo</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="promotion" [(ngModel)]='promo'>
+  </div>
+  
+    <div class="form-group">
+      <label for="exampleFormControlFile1">photo de produit</label>
+      <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="selectFile($event)" >
+    </div>
+    <button type="button" class="btn btn-primary" (click)="enre()">registre produit</button>
+
+
+</div>
+<div class="row" *ngIf="nvCom">
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">no</th>
+        <th scope="col">date commande</th>
+        <th scope="col">prouit</th>
+        <th scope="col">livrison</th>
+        <th scope="col">adresse</th>
+        <th  scope="col">prix </th>
+        <th scope="col">totale</th>
+        <th scope="col">client</th>
+        <th scope="col">action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let com of tabNC ,index as i" >
+        <th scope="row">{{i+1}}</th>
+        <td>{{com.date}}</td>
+        <td><ul class="list-group">
+          <li class="list-group-item" *ngFor="let prod of com.produit,index as i">{{prod.nameProd}} {{prod.refProd}}</li>
+        
+        </ul></td>
+        <td>{{com. typeLiverison}}</td>
+        
+        <td>{{com.Adresse}}</td>
+        <td>{{com.prixTot}}</td>
+        <td>{{com.prix}}</td>
+        <td><ul class="list-group">
+          <li class="list-group-item" >{{com.user.name}} </li>
+          <li class="list-group-item" >{{com.user.prenom}} </li>
+        
+          <li class="list-group-item" >{{com.user.email}} </li>
+          <li class="list-group-item" >{{com.user.phone}} </li>
+          <li class="list-group-item" >aff: {{com.user. Aff}} </li>
+          <li class="list-group-item" >nouveaux:  {{com.user.nouveaux}} </li>
+        <li  class="list-group-item">originale : {{com.user. originale}}</li>
+        <li  class="list-group-item" *ngIf="!com.user.originale ">id presone ajout : {{com.user.userAj. originale}}</li>
+        
+        </ul></td>
+        <td>   
+          <!-- Call to action buttons -->
+          <ul class="list-inline m-0">
+              <li class="list-inline-item" (click)="valider(i)">
+                  <button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button>
+              </li>
+              <li class="list-inline-item">
+                  <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+              </li>
+              <li class="list-inline-item" (click)="sup(i)">
+                  <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+              </li>
+          </ul>
+      </td>
+      </tr>
+   
+      
+    </tbody>
+  </table>
+</div>
+<div class="row" *ngIf="testSal">
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">no</th>
+        <th scope="col">nom </th>
+        <th scope="col">prenom</th>
+        <th scope="col">cin</th>
+        <th scope="col">garde</th>
+        <th scope="col">salaire</th>
+        <th>prime</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sal of tabSalaire ,index as i" >
+        <th scope="row">{{i+1}}</th>
+        <td>{{sal.name}}</td>
+        <td>{{sal.prenom}}</td>
+        <td>{{sal.cin}}</td>
+        <td>{{sal.grade.grade}}</td>
+        <td>{{sal.brut}}</td>
+        <td>{{sal.primeParinage}}</td>
+       
+      
+      </tr>
+   
+      
+    </tbody>
+  </table>
+</div>
+<div class="row" *ngIf="gradeAff">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">niveau</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="entre le nom de grade" [(ngModel)]="grade">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Min</label>
+    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="entre le nom de produit" [(ngModel)]="min">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Max</label>
+    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="entre le nom de produit" [(ngModel)]="max">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">remise</label>
+    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="entre le nom de produit" [(ngModel)]="remise">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">primme de parinage</label>
+    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="entre le nom de produit" [(ngModel)]="PrimePar">
+  </div>
+  <button type="button" class="btn btn-primary" (click)="enreG()">registre grade</button>
+</div>
+<div class="row" *ngIf="testPrime" >
+  <div class="col-12" style="text-align: center;">
+    <h5>ajout de prime salaire grades</h5>
+  </div>
+  <div class="form-row" >
+    <select class="form-select" aria-label="Default select example" (change)="chGrade($event)"  >
+    <option   selected>choisir grade ajouter leur prime de salaire</option>
+    <option value={{grade.grade}} *ngFor="let grade of  log.tabGrade , index as i">{{grade.grade}}</option>
+  </select>
+  
+</div>
+<div class="col-12" style="margin-top: 5px;" >
+  <table class="table table-striped" *ngIf="testAjRemp">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th  scope="col">grade</th>
+        <th *ngIf="testPrimeAj" scope="col">prime</th>
+        <th scope="col" *ngIf="testPrimeAj">ajout</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let gr of tabpirme ,index as i">
+        <th scope="row">{{i}}</th>
+        <td >{{gr.grade}}</td>
+        <td >  <div class="form-group">
+        
+          <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter prime" (change)="prio($event,i)">
+        
+        </div></td>
+      
+      </tr>
+      
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-primary btn-lg btn-block"(click)="registrePrimeAni()" >registre prime</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+  <!--mat-->
+  
+    <!---fmat-->
+ <!----<form *ngIf="Ajclient" [formGroup]="user">
+      <div class="form-row" >
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">nom</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Email"  formControlName='name' >
+          <p *ngIf="user.controls.name.hasError('required') && this.user.controls.name.touched" style="color: red;"> non </p>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Prenom</label>
+          <input type="password" class="form-control" id="inputPassword4" placeholder="Password"  formControlName='prenom'>
+        </div>
+      </div>
+      <div class="form-row" >
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">email</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Email"  formControlName='email'>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Phone</label>
+          <input type="number" class="form-control" id="inputPassword4" placeholder="Password" formControlName='phone' >
+        </div>
+      </div>
+      <div class="form-row" >
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">cin</label>
+          <input type="number" class="form-control" id="inputEmail4" placeholder="cin" formControlName='cin' [(ngModel)]="pass">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">confirme cin</label>
+          <input type="number" class="form-control" id="inputPassword4" placeholder="cin" formControlName='password'>
+          <p *ngIf="user.controls.password.hasError('obj') && this.user.controls.password.touched" style="color: red;"> non </p>
+        </div>
+      </div>
+    
+    
+      
+   
+      <button type="submit" class="btn btn-primary" (click)="regClent()">Sign in</button>
+    </form>-->
+   
+   
+ 
+  
+
+<!----->
+
+ 
+  <!--<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">produit</th>
+        <th scope="col">nombre</th>
+        <th scope="col">prix</th>
+      </tr>
+    </thead>
+    <tbody  *ngFor="let data of panniers,index as i " >
+      <td>i</td>
+      <td>{{data.prod.text}}</td>
+      <td>{{data.nombre}}</td>
+      <td>{{data.prod.prixProd}}</td>
+
+     
+    </tbody>
+    <tbody   >
+      <td>-----</td>
+      <td>------</td>
+      <td>------</td>
+      <td>{{prixTOT}}</td>
+
+     
+    </tbody>
+  </table>
+-->
+
+  <!--<div class="col-4">
+    <div  *ngIf="Ajcommande">
+     
+     <mat-card class="child" >
+       <div class="container">
+         <div class="row">
+           <form [formGroup]="beComponentForm">
+             <div class="col-sm-12">
+               <mat-form-field class="col-sm-4 inp">
+                   <mat-select formControlName="slct_cntrl" placeholder="passer commande"  >
+                     <div class="fixed">
+                       <mat-form-field  [floatLabel]="'never'" style="margin: 5px;padding-left: 10px;padding-right: 10px;
+                                     border: 1.5px solid rgba(216, 220, 230, 0.87); border-radius: 5px;
+                                     position: absolute;top: 0;width: calc(100% - 30px);background: white;z-index: 100;height:65px;">
+                         <input matInput placeholder="" style="padding-left:10px" (input)="lookup($event);" #inputFilter >
+                         <i class="fa fa-search" matPrefix></i>
+                         <i class="fa fa-times" matSuffix (click)="clean(inputFilter);"></i>
+                       </mat-form-field>
+                     </div>
+                     <div style="padding-top: 80px" >
+                       <mat-option *ngFor="let data of filteredDataToSearch ,index as i " [value]="data.value" (click)="com(i)"  >
+                         {{data.text}}
+                       </mat-option>
+                     </div>
+                   </mat-select>
+               </mat-form-field>
+             </div>
+           </form>
+         </div>
+         
+       </div>
+      
+ 
+     </mat-card>
+    <div class="input-group mb-3" >
+       <input style="witdh:500px;" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="nombre">
+       <div class="input-group-append">
+         <button class="btn btn-outline-secondary" (click)="ajtPan()" type="button">ajouter aux panier</button>
+       </div>
+     </div>
+  
+      </div>
+     
+  </div>-->
+  <!--<div class="col-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">produit</th>
+          <th scope="col">nombre</th>
+          <th scope="col">prix</th>
+        </tr>
+      </thead>
+      <tbody  *ngFor="let data of panniers,index as i " >
+        <td>i</td>
+        <td>{{data.prod.text}}</td>
+        <td>{{data.nombre}}</td>
+        <td>{{data.prod.prixProd}}</td>
+
+       
+      </tbody>
+      <tbody   >
+        <td>-----</td>
+        <td>------</td>
+        <td>------</td>
+        <td>{{prixTOT}}</td>
+
+       
+      </tbody>
+    </table>
+  </div>-->
